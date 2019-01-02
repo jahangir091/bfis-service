@@ -1,0 +1,80 @@
+<html>
+<head><title>Test client</title></head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<body>
+
+<div id="info"></div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+// 	$.ajax({
+// 		   url: 'http://149.139.19.8:8080/bfis-service/rest/legends',
+// 		   error: function() {
+// 		      $('#info').html('<p>An error has occurred</p>');
+// 		   },
+// 		   success: function(data) {		      
+// 		      $('#info')
+// 		         .html('<p>Status: '+data.status+'<br/>Message: '+data.message+'<br/>Results: '+data.results+'</p>');
+// 		      $('#info')
+// 		         .append('<p>First result: '+data.results[0]+'</p>');
+// 		   },
+// 		   type: 'GET'
+// 		});
+	
+// 	var XMLData = "<XmlParameter><LC_Legend xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' id='query-legend' lccs_sort='0' uuid='66a80a10-e8ed-11e5-8938-288023190d9d' xsi:noNamespaceSchemaLocation='NFA_translation.xsd' xsi:type='LC_Legend'>"
+// 		   +"<description>Describe the legend</description>"+ "</LC_Legend></XmlParameter>";
+		
+// 		$.ajax({
+// 			   url: 'http://149.139.19.8:8080/bfis-service/rest/legends/query-legend',
+// 			   data: XMLData,
+// 			   contentType: 'application/xml',
+// 			   error: function() {
+// 			      $('#info').html('<p>An error has occurred.</p>');
+// 			   },		   
+// 			   success: function(data) {		      
+// 			      $('#info')
+// 			         .html('<p>Status: '+data.status+'<br/>Message: '+data.message+'<br/>Results: '+data.results+'</p>');
+			     
+// 			   },
+// 			   type: 'PUT'
+// 			});
+		
+// 			$.ajax({
+// 				   url: 'http://149.139.19.8:8080/bfis-service/rest/legends/query-legend',
+// 				   error: function() {
+// 				      $('#info').html('<p>An error has occurred.</p>');
+// 				   },		   
+// 				   success: function(data) {		      
+// 				      $('#info')
+// 				         .html('<p>Status: '+data.status+'<br/>Message: '+data.message+'<br/>Results: '+data.results+'</p>');
+				     
+// 				   },
+// 				   type: 'DELETE'
+// 				});
+
+	var JSONData = "{"+
+		  "\"type\": \"FULL_PROTOTYPE\","+
+		  "\"similarityThreshold\": 0,"+
+		  "\"advancedOptions\": {},"+
+		  "\"code\": \"q1\""+
+		"}";
+		
+		$.ajax({
+			   url: 'http://boldrini.essi-lab.eu:9090/bfis-service/rest/layers/bfd2007/query-by-class',
+			   data: JSONData,
+			   contentType: 'application/json',
+			   error: function() {
+			      $('#info').html('<p>An error has occurred.</p>');
+			   },		   
+			   success: function(data) {		      
+			      $('#info')
+			         .html('<p>Status: '+data.status+'<br/>Message: '+data.message+'<br/>Results: '+data.results+'</p>');
+			     
+			   },
+			   type: 'POST'
+			});
+
+	}); 
+</script>
+</body>
+</html>

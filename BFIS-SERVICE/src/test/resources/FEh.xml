@@ -1,0 +1,178 @@
+<LC_LandCoverClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	id="151" uuid="344cdf13-ec75-11e5-b6f5-780cb82883be" xsi:type="LC_LandCoverClass">
+	<name>Hilly Forest</name>
+	<description>Describe the land cover class</description>
+	<map_code>FEh</map_code>
+	<elements>
+		<LC_Characteristic id="1F7"
+			uuid="b0a53ef4-50f6-11de-bcd7-000cf147c442" xsi:type="LC_LandForm">
+			<name>Land Form</name>
+			<description>Describe the land form</description>
+			<type>Sloping Land</type>
+			<slope_class_type>Hilly</slope_class_type>
+		</LC_Characteristic>
+		<LC_Characteristic id="152"
+			uuid="b0a53ef5-50f6-11de-bcd7-000cf147c442" xsi:type="LC_TopographicalAspects">
+			<name>Topographical Aspects</name>
+			<description>Describe the topographical aspects</description>
+			<altitude max="1100.0" min="200.0" />
+		</LC_Characteristic>
+		<LC_HorizontalPattern id="153"
+			uuid="344cdf12-ec75-11e5-b6f5-780cb82883be" xsi:type="LC_HorizontalPattern">
+			<name>Horizontal Pattern 1</name>
+			<description>Describe the horizontal pattern</description>
+			<elements>
+				<LC_Stratum id="154" ontop="0"
+					uuid="344cdf11-ec75-11e5-b6f5-780cb82883be" xsi:type="LC_Stratum">
+					<name>Stratum 1</name>
+					<description>Vegetation 1</description>
+					<elements>
+						<LC_LandCoverElement id="155"
+							uuid="344cdf10-ec75-11e5-b6f5-780cb82883be" xsi:type="LC_Trees">
+							<name>Trees</name>
+							<description>Describe a vegetation element of trees type</description>
+							<elements>
+								<LC_Characteristic id="202"
+									uuid="27a47295-43af-11de-bbd4-000cf147c442" xsi:type="LC_FloristicAspect">
+									<name>Floristic Aspect</name>
+									<description>Describe the floristic aspect</description>
+									<elements>
+										<LC_Characteristic id="203"
+											uuid="f8497260-63cc-11e6-949f-28e3478d86fa" xsi:type="LC_FloristicAspectSpecies">
+											<name>Floristic Aspect Species</name>
+											<description>Describe the floristic aspect species</description>
+											<species_name>Wood Timber</species_name>
+										</LC_Characteristic>
+									</elements>
+								</LC_Characteristic>
+								<LC_Characteristic id="1F8"
+									uuid="27a47296-43af-11de-bbd4-000cf147c442" xsi:type="LC_AllometricMeasurements">
+									<name>Allometric Measurements</name>
+									<description>Describe the allometric measurements</description>
+									<trunk_diameter max="2.5" min="2.0" />
+									<crown_diameter max="20.0" min="10.0" />
+								</LC_Characteristic>
+								<LC_Characteristic id="156"
+									uuid="27a47286-43af-11de-bbd4-000cf147c442" xsi:type="LC_NaturalOrSeminaturalVegetation">
+									<name>Natural Or Seminatural Vegetation</name>
+									<description>Describe the natural or seminatural vegetation</description>
+								</LC_Characteristic>
+							</elements>
+							<presence_type>Mandatory</presence_type>
+							<cover max="100.0" min="10.0" />
+							<LC_WoodyGrowthLeafType id="1E8"
+								uuid="e3aec875-3572-11de-a238-000cf147c442" xsi:type="LC_WoodyGrowthLeafType">
+								<name>Woody Growth Leaf Type</name>
+								<description>Contains the elements of Woody Growth Leaf Type</description>
+								<elements>
+									<LC_WoodyLeafType id="1E9"
+										uuid="3e44a570-63b7-11e6-949f-28e3478d86fa" xsi:type="LC_Broadleaved">
+										<name>Broadleaved</name>
+										<description>Describe a Broadleaved type element</description>
+									</LC_WoodyLeafType>
+								</elements>
+							</LC_WoodyGrowthLeafType>
+							<LC_WoodyGrowthLeafPhenology id="1EA"
+								uuid="e3aec874-3572-11de-a238-000cf147c442" xsi:type="LC_WoodyGrowthLeafPhenology">
+								<name>Woody Growth Leaf Phenology</name>
+								<description>Contains the elements of Woody Growth Leaf
+									Phenology</description>
+								<elements>
+									<LC_WoodyLeafPhenology id="1EB"
+										uuid="38e4e9f0-63b7-11e6-949f-28e3478d86fa" xsi:type="LC_Evergreen">
+										<name>Evergreen</name>
+										<description>Describe an Evergreen leaf phenology element</description>
+									</LC_WoodyLeafPhenology>
+									<LC_WoodyLeafPhenology id="1EC"
+										uuid="38e75af0-63b7-11e6-949f-28e3478d86fa" xsi:type="LC_Deciduous">
+										<name>Deciduous</name>
+										<description>Describe a Deciduous leaf phenology element</description>
+									</LC_WoodyLeafPhenology>
+								</elements>
+							</LC_WoodyGrowthLeafPhenology>
+							<height max="60.0" min="5.0" />
+						</LC_LandCoverElement>
+					</elements>
+					<presence_type>Mandatory</presence_type>
+				</LC_Stratum>
+				<LC_Stratum id="2EA" ontop="0"
+					uuid="78a39263-6e9f-11e6-828f-28e3478d86fa" xsi:type="LC_Stratum">
+					<name>Stratum 2</name>
+					<description>Vegetation 2</description>
+					<elements>
+						<LC_LandCoverElement id="2EB"
+							uuid="78a39262-6e9f-11e6-828f-28e3478d86fa" xsi:type="LC_Shrubs">
+							<name>Shrubs</name>
+							<description>Describe a vegetation element of shrubs type</description>
+							<elements>
+								<LC_Characteristic id="2EC"
+									uuid="27a47286-43af-11de-bbd4-000cf147c442" xsi:type="LC_NaturalOrSeminaturalVegetation">
+									<name>Natural Or Seminatural Vegetation</name>
+									<description>Describe the natural or seminatural vegetation</description>
+								</LC_Characteristic>
+								<LC_Characteristic id="2ED"
+									uuid="27a47296-43af-11de-bbd4-000cf147c442" xsi:type="LC_AllometricMeasurements">
+									<name>Allometric Measurements</name>
+									<description>Describe the allometric measurements</description>
+									<trunk_diameter max="4.0" min="3.0" />
+									<crown_diameter max="5.0" min="1.0" />
+								</LC_Characteristic>
+							</elements>
+							<presence_type>Mandatory</presence_type>
+							<LC_WoodyGrowthLeafType id="2F1"
+								uuid="e3aec875-3572-11de-a238-000cf147c442" xsi:type="LC_WoodyGrowthLeafType">
+								<name>Woody Growth Leaf Type</name>
+								<description>Contains the elements of Woody Growth Leaf Type</description>
+								<elements>
+									<LC_WoodyLeafType id="2F2"
+										uuid="78a39261-6e9f-11e6-828f-28e3478d86fa" xsi:type="LC_Broadleaved">
+										<name>Broadleaved</name>
+										<description>Describe a Broadleaved type element</description>
+									</LC_WoodyLeafType>
+								</elements>
+							</LC_WoodyGrowthLeafType>
+							<LC_WoodyGrowthLeafPhenology id="2F3"
+								uuid="e3aec874-3572-11de-a238-000cf147c442" xsi:type="LC_WoodyGrowthLeafPhenology">
+								<name>Woody Growth Leaf Phenology</name>
+								<description>Contains the elements of Woody Growth Leaf
+									Phenology</description>
+								<elements>
+									<LC_WoodyLeafPhenology id="2F4"
+										uuid="78a39260-6e9f-11e6-828f-28e3478d86fa" xsi:type="LC_Evergreen">
+										<name>Evergreen</name>
+										<description>Describe an Evergreen leaf phenology element</description>
+									</LC_WoodyLeafPhenology>
+								</elements>
+							</LC_WoodyGrowthLeafPhenology>
+							<height max="5.0" min="1.0" />
+						</LC_LandCoverElement>
+					</elements>
+					<presence_type>Optional</presence_type>
+				</LC_Stratum>
+				<LC_Stratum id="2EE" ontop="0"
+					uuid="82852c81-6e9f-11e6-828f-28e3478d86fa" xsi:type="LC_Stratum">
+					<name>Stratum 3</name>
+					<description>Vegetation 3</description>
+					<elements>
+						<LC_LandCoverElement id="2EF"
+							uuid="82852c80-6e9f-11e6-828f-28e3478d86fa" xsi:type="LC_HerbaceousGrowthForms">
+							<name>Herbaceous growth forms</name>
+							<description>Describe a vegetation element of herbaceous growth
+								form type</description>
+							<elements>
+								<LC_Characteristic id="2F0"
+									uuid="27a47286-43af-11de-bbd4-000cf147c442" xsi:type="LC_NaturalOrSeminaturalVegetation">
+									<name>Natural Or Seminatural Vegetation</name>
+									<description>Describe the natural or seminatural vegetation</description>
+								</LC_Characteristic>
+							</elements>
+							<presence_type>Mandatory</presence_type>
+						</LC_LandCoverElement>
+					</elements>
+					<presence_type>Optional</presence_type>
+				</LC_Stratum>
+			</elements>
+		</LC_HorizontalPattern>
+	</elements>
+</LC_LandCoverClass>
+     

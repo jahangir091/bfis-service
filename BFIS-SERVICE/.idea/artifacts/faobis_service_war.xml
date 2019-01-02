@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="faobis-service:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="bfis-service.war">
+      <element id="artifact" artifact-name="faobis-service:war exploded" />
+    </root>
+  </artifact>
+</component>
