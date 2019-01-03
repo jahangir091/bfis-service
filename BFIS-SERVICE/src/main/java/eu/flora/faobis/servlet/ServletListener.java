@@ -152,11 +152,11 @@ public class ServletListener implements ServletContextListener {
 	SwaggerBootstrap.BASE_PATH = "/bfis-service/rest";
 
 	// exist configuration
-	ExistConnector.URI = "xmldb:exist://" + existip + ":" + existport + "/exist/xmlrpc";
-	ExistConnector.user = existuser;
-	ExistConnector.password = existpassword;
+	ExistConnector.URI = "xmldb:exist://" + propertyReader.getExistip() + ":" + propertyReader.getExistport() + "/exist/xmlrpc";
+	ExistConnector.user = propertyReader.getExistuser();
+	ExistConnector.password = propertyReader.getExistpassword();
 
-        String existURL = "http://" + existip + ":" + existport + "/exist";
+        String existURL = "http://" + propertyReader.getExistip() + ":" + propertyReader.getExistport() + "/exist";
 	while (checkResponseCode(existURL) != 200) {
 	    System.out.println("Waiting for eXist to come up: " + existURL);
 	    try {
@@ -177,11 +177,11 @@ public class ServletListener implements ServletContextListener {
 	// e.printStackTrace();
 	// }
 
-        String postgresUrl = "jdbc:postgresql://" + postgresip + ":" + postgresport + "/";
+        String postgresUrl = "jdbc:postgresql://" + propertyReader.getPostgresip() + ":" + propertyReader.getPostgresport() + "/";
 
 	try {
-            GeonodeConnector.getInstance().initConnection(postgresUrl, postgresuser, postgrespassword, postgresmetadatadb, postgresdatadb,
-                    webserverurl, geoserverurl, classificationtable);
+            GeonodeConnector.getInstance().initConnection(postgresUrl, propertyReader.getPostgresuser(), propertyReader.getPostgrespassword(), propertyReader.getPostgresmetadatadb(), propertyReader.getPostgresdatadb(),
+                    propertyReader.getWebserverurl(), propertyReader.getGeoserverurl(), propertyReader.getClassificationtable());
 //                    "http://" + hostname);
 	    // the following line deletes and recreates the classification table
 	    // GeonodeConnector.getInstance().createClassificationTable();
@@ -189,7 +189,7 @@ public class ServletListener implements ServletContextListener {
 	    e.printStackTrace();
 	}
 //        String geoserverURL = "http://" + tomcatip + ":" + tomcatport + "/geoserver";
-        GeoserverConnector.getInstance().init(geoserverurl, geoserveruser, geoserverpassword);
+        GeoserverConnector.getInstance().init(propertyReader.getGeoserverurl(), propertyReader.getGeoserveruser(), propertyReader.getGeoserverpassword());
 	System.out.println("BFIS service started up");
 	// GeonodeConnector.getInstance().createClassificationTable();
 
