@@ -19,10 +19,13 @@ import it.geosolutions.geoserver.rest.GeoServerRESTManager;
 import it.geosolutions.geoserver.rest.encoder.GSLayerEncoder;
 import it.geosolutions.geoserver.rest.encoder.GSResourceEncoder;
 import it.geosolutions.geoserver.rest.encoder.feature.GSFeatureTypeEncoder;
+import eu.flora.faobis.PropertyReader;
 
 public class GeoserverConnector {
 
     private static GeoserverConnector instance = null;
+    
+    private static PropertyReader propertyReader = PropertyReader.getInstance();
 
     // something like http://faobis.essi-lab.eu:8080/geoserver
     String endpoint = null;
@@ -30,8 +33,8 @@ public class GeoserverConnector {
     String password;
     private GeoServerRESTManager manager = null;
 
-    public static final String WORKSPACE = "geonode";
-    public static final String STORE_NAME = "datastore";
+    public static final String WORKSPACE = propertyReader.getWORKSPACE();
+    public static final String STORE_NAME = propertyReader.getSTORE_NAME();
     public static final String STYLE_SUFFIX = "";
 
     public GeoServerRESTManager getManager() {

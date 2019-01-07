@@ -35,26 +35,26 @@ public class ServletListener implements ServletContextListener {
     }
 
 //    private String hostname = "103.48.16.254";  //"192.168.56.102"; // "faobis.essi-lab.eu";
-//    private String webserverurl = "http://localhost";
-//    private String geoserverurl = "http://localhost:8080/geoserver";
-//    private String tomcatip = "127.0.0.1";
-//    private String tomcatport = "8080";
-//    private String geoserveruser = "admin";
-//    private String geoserverpassword = "geoserver";
-//
-//    private String postgresip = "127.0.0.1";
-//    private String postgresport = "5432";
-//    private String postgresuser = "geodash_dev";
-//    private String postgrespassword = "";
-//    private String postgresmetadatadb = "geodash_dev_backup";
-//    private String postgresdatadb = "geodash_dev_backup-imports";
-//
-//    private String existdburl = "http://localhost:8080/exist";
-//    private String existip = "127.0.0.1";
-//    private String existport = "8081";
-//    private String existuser = "admin";
-//    private String existpassword = "Ge0Dash123";
-//    private String classificationtable = "classification_CqhvqTL6";
+    private String webserverurl = "http://localhost";
+    private String geoserverurl = "http://localhost:8080/geoserver";
+    private String tomcatip = "127.0.0.1";
+    private String tomcatport = "8080";
+    private String geoserveruser = "admin";
+    private String geoserverpassword = "geoserver";
+
+    private String postgresip = "127.0.0.1";
+    private String postgresport = "5432";
+    private String postgresuser = "geodash_dev";
+    private String postgrespassword = "";
+    private String postgresmetadatadb = "geodash_dev_backup";
+    private String postgresdatadb = "geodash_dev_backup-imports";
+
+    private String existdburl = "http://localhost:8080/exist";
+    private String existip = "127.0.0.1";
+    private String existport = "8081";
+    private String existuser = "admin";
+    private String existpassword = "Ge0Dash123";
+    private String classificationtable = "classification_cqhvqtl6";
 
     @Override
     public void contextInitialized(ServletContextEvent arg0) {
@@ -68,25 +68,27 @@ public class ServletListener implements ServletContextListener {
             PropertyReader.getInstance().loadProperties(input);
 //	    prop.load(input);
 //	    hostname = prop.getProperty("hostname");
-//            webserverurl = prop.getProperty("webserverurl");
-//            geoserverurl = prop.getProperty("geoserverurl");
-//            tomcatip = prop.getProperty("tomcatip");
-//            tomcatport = prop.getProperty("tomcatport");
-//            geoserveruser = prop.getProperty("geoserveruser");
-//            geoserverpassword = prop.getProperty("geoserverpassword");
-//
-//            postgresip = prop.getProperty("postgresip");
-//	    postgresport = prop.getProperty("postgresport");
-//	    postgresuser = prop.getProperty("postgresuser");
-//	    postgrespassword = prop.getProperty("postgrespassword");
-//	    postgresmetadatadb = prop.getProperty("postgresmetadatadb");
-//	    postgresdatadb = prop.getProperty("postgresdatadb");
-//            classificationtable = prop.getProperty("classificationtable");
-//
-//            existip = prop.getProperty("existip");
-//	    existport = prop.getProperty("existport");
-//	    existuser = prop.getProperty("existuser");
-//            existpassword = prop.getProperty("existpassword");
+            webserverurl = propertyReader.getWebserverurl();
+            geoserverurl = propertyReader.getGeoserverurl();
+            tomcatip = propertyReader.getTomcatip();
+            tomcatport = propertyReader.getTomcatport();
+            geoserveruser = propertyReader.getGeoserveruser();
+            geoserverpassword = propertyReader.getGeoserverpassword();
+
+            postgresip = propertyReader.getPostgresip();
+	    postgresport = propertyReader.getPostgresport();
+	    postgresuser = propertyReader.getPostgresuser();
+	    postgrespassword = propertyReader.getPostgrespassword();
+	    postgresmetadatadb = propertyReader.getPostgresmetadatadb();
+	    postgresdatadb = propertyReader.getPostgresdatadb();
+            classificationtable = propertyReader.getClassificationtable();
+
+            existip = propertyReader.getExistip();
+	    existport = propertyReader.getExistport();
+	    existuser = propertyReader.getExistuser();
+            existpassword = propertyReader.getExistpassword();
+
+
 //        } catch (IOException ex) {
 //	    ex.printStackTrace();
 //	} finally {
@@ -152,11 +154,11 @@ public class ServletListener implements ServletContextListener {
 	SwaggerBootstrap.BASE_PATH = "/bfis-service/rest";
 
 	// exist configuration
-	ExistConnector.URI = "xmldb:exist://" + propertyReader.getExistip() + ":" + propertyReader.getExistport() + "/exist/xmlrpc";
-	ExistConnector.user = propertyReader.getExistuser();
-	ExistConnector.password = propertyReader.getExistpassword();
+	ExistConnector.URI = "xmldb:exist://" + existip + ":" + existport + "/exist/xmlrpc";
+	ExistConnector.user = existuser;
+	ExistConnector.password = existpassword;
 
-        String existURL = "http://" + propertyReader.getExistip() + ":" + propertyReader.getExistport() + "/exist";
+        String existURL = "http://" + existip + ":" + existport + "/exist";
 	while (checkResponseCode(existURL) != 200) {
 	    System.out.println("Waiting for eXist to come up: " + existURL);
 	    try {
@@ -177,11 +179,11 @@ public class ServletListener implements ServletContextListener {
 	// e.printStackTrace();
 	// }
 
-        String postgresUrl = "jdbc:postgresql://" + propertyReader.getPostgresip() + ":" + propertyReader.getPostgresport() + "/";
+        String postgresUrl = "jdbc:postgresql://" + postgresip + ":" + postgresport + "/";
 
 	try {
-            GeonodeConnector.getInstance().initConnection(postgresUrl, propertyReader.getPostgresuser(), propertyReader.getPostgrespassword(), propertyReader.getPostgresmetadatadb(), propertyReader.getPostgresdatadb(),
-                    propertyReader.getWebserverurl(), propertyReader.getGeoserverurl(), propertyReader.getClassificationtable());
+            GeonodeConnector.getInstance().initConnection(postgresUrl, postgresuser, postgrespassword, postgresmetadatadb, postgresdatadb,
+                    webserverurl, geoserverurl, classificationtable);
 //                    "http://" + hostname);
 	    // the following line deletes and recreates the classification table
 	    // GeonodeConnector.getInstance().createClassificationTable();
@@ -189,7 +191,7 @@ public class ServletListener implements ServletContextListener {
 	    e.printStackTrace();
 	}
 //        String geoserverURL = "http://" + tomcatip + ":" + tomcatport + "/geoserver";
-        GeoserverConnector.getInstance().init(propertyReader.getGeoserverurl(), propertyReader.getGeoserveruser(), propertyReader.getGeoserverpassword());
+        GeoserverConnector.getInstance().init(geoserverurl, geoserveruser, geoserverpassword);
 	System.out.println("BFIS service started up");
 	// GeonodeConnector.getInstance().createClassificationTable();
 

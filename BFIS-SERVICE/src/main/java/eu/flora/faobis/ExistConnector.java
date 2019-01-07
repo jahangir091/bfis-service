@@ -35,12 +35,15 @@ import org.xmldb.api.modules.XPathQueryService;
 import eu.flora.essi.lib.xml.XMLDocumentReader;
 import eu.flora.essi.lib.xml.XMLDocumentReader.NodeResult;
 import eu.flora.faobis.xml.XMLDocument;
+import eu.flora.faobis.PropertyReader;
 
 public class ExistConnector {
-    public static String URI = "xmldb:exist://faobis.essi-lab.eu:8899/exist/xmlrpc";
-    public static String user = "admin";
-    public static String password = "Bang17";
-    public static String LCML_DIRECTORY = "/db/lcml";
+    private static PropertyReader propertyReader = PropertyReader.getInstance();
+    public static String URI = propertyReader.getURI();
+    public static String user = propertyReader.getUser();
+    public static String password = propertyReader.getPassword();
+    public static String LCML_DIRECTORY = propertyReader.getLCML_DIRECTORY();
+    
     private static ExistConnector instance = null;
 
     public static ExistConnector getInstance() {

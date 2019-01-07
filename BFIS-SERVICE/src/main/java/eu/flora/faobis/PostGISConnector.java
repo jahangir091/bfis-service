@@ -12,20 +12,21 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
+import eu.flora.faobis.PropertyReader;
 
 import org.apache.commons.io.IOUtils;
 
 public class PostGISConnector {
     
-    static Properties prop = new Properties();
+    private static PropertyReader propertyReader = PropertyReader.getInstance();
 
-    public static  String LCCS_CODE_COLUMN = prop.getProperty("classificationtable");
-    public static  String SOURCE_LCCS_CODE_COLUMN;
-    public static String AGGREGATION_SUFFIX; 
-    private static String IDENTIFIER_COLUMN;
+    public static final String LCCS_CODE_COLUMN = propertyReader.getLCCS_CODE_COLUMN();
+    public static final String SOURCE_LCCS_CODE_COLUMN = propertyReader.getSOURCE_LCCS_CODE_COLUMN();
+    public static final String AGGREGATION_SUFFIX = propertyReader.getPOSTGIS_AGGREGATION_SUFFIX();
+    private static final String IDENTIFIER_COLUMN = propertyReader.getPOSTGIS_IDENTIFIER_COLUMN();
+    
     private static PostGISConnector instance;
 
     public static PostGISConnector getInstance() {
@@ -36,10 +37,6 @@ public class PostGISConnector {
     }
 
     private PostGISConnector() {
-         LCCS_CODE_COLUMN = prop.getProperty("classificationtable");
-         SOURCE_LCCS_CODE_COLUMN  = prop.getProperty("source_lccs_code");
-         AGGREGATION_SUFFIX = "aggregation";
-         IDENTIFIER_COLUMN = "gid";
     }
 
     private Connection connection;

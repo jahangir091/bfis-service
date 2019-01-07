@@ -21,16 +21,16 @@ import java.util.Set;
 import org.apache.commons.io.IOUtils;
 
 public class GeonodeConnector {
-
-    public static final String LCML_CODE_COLUMN = "LCCS_code";
-    public static final String SOURCE_LCML_CODE_COLUMN = "SOURCE_LCCS_code";
-    public static final String AGGREGATION_SUFFIX = "aggregation";
-    private static final String IDENTIFIER_COLUMN = "fid";
+    private static PropertyReader propertyReader = PropertyReader.getInstance();
+    public static final String LCML_CODE_COLUMN = propertyReader.getLCML_CODE_COLUMN();
+    public static final String SOURCE_LCML_CODE_COLUMN = propertyReader.getSOURCE_LCML_CODE_COLUMN();
+    public static final String AGGREGATION_SUFFIX = propertyReader.getAGGREGATION_SUFFIX();
+    private static final String IDENTIFIER_COLUMN = propertyReader.getIDENTIFIER_COLUMN();
     private static String CLASSIFICATION_TABLE;
-    private static final String LAYER_COLUMN = "layer";
-    private static final String LCCS_ATTRIBUTE_COLUMN = "lccs_attribute";
-    private static final String LCCS_LEGEND_COLUMN = "lccs_legend";
-    private static final String GEOMETRY = "the_geom";
+    private static final String LAYER_COLUMN = propertyReader.getLAYER_COLUMN();
+    private static final String LCCS_ATTRIBUTE_COLUMN = propertyReader.getLCCS_ATTRIBUTE_COLUMN();
+    private static final String LCCS_LEGEND_COLUMN = propertyReader.getLCCS_LEGEND_COLUMN();
+    private static final String GEOMETRY = propertyReader.getGEOMETRY();
     private static GeonodeConnector instance;
 
     public static GeonodeConnector getInstance() {

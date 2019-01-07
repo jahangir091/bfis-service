@@ -42,6 +42,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.xmldb.api.base.Resource;
+import eu.flora.faobis.PropertyReader;
 
 @Api
 @Path("/")
@@ -78,6 +79,8 @@ public class FAOBISService {
     //////////////////////////////////////////////////
     // SCHEMA
     //////////////////////////////////////////////////
+    
+    private PropertyReader propertyReader = PropertyReader.getInstance();
 
     /**
      * Basic Element list
@@ -290,9 +293,9 @@ public class FAOBISService {
 		// return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(entity).build();
 		// }
 		// System.out.println("LCCS column identified as: " + column);
-		GeoserverConnector.getInstance().publishLayer(layer, GeonodeConnector.LCML_CODE_COLUMN);
+		GeoserverConnector.getInstance().publishLayer(layer, propertyReader.getLCML_CODE_COLUMN());
 		GeonodeConnector.getInstance().updateLayer(layer);
-		GeonodeConnector.getInstance().addClassification(layer, GeonodeConnector.LCML_CODE_COLUMN, legend);
+		GeonodeConnector.getInstance().addClassification(layer, propertyReader.getLCML_CODE_COLUMN(), legend);
 
 	    }
 	    FAOBISResponse entity = new FAOBISResponse(Status.OK, "Legend created: " + legend);

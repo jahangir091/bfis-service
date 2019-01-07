@@ -158,7 +158,44 @@ public class PropertyReader {
         return LCML_DIRECTORY;
     }
     
-    public String getLCML_CODE_COLUMN() {
+    
+    public String getSWAGGER_BOOTSTRAP_PORT() {
+        return SWAGGER_BOOTSTRAP_PORT;
+    }
+
+    public String getSWAGGER_BOOTSTRAP_BASE_PATH() {
+        return SWAGGER_BOOTSTRAP_BASE_PATH;
+    }
+
+    public String getSWAGGER_BOOTSTRAP_HOST_NAME() {
+        return SWAGGER_BOOTSTRAP_HOST_NAME;
+    }
+    
+    public String getLCCS_CODE_COLUMN() {
+        return LCCS_CODE_COLUMN;
+    }
+
+    public String getSOURCE_LCCS_CODE_COLUMN() {
+        return SOURCE_LCCS_CODE_COLUMN;
+    }
+
+    public String getPOSTGIS_AGGREGATION_SUFFIX() {
+        return POSTGIS_AGGREGATION_SUFFIX;
+    }
+
+    public String getPOSTGIS_IDENTIFIER_COLUMN() {
+        return POSTGIS_IDENTIFIER_COLUMN;
+    }
+    
+    public String getWORKSPACE() {
+        return WORKSPACE;
+    }
+
+    public String getSTORE_NAME() {
+        return STORE_NAME;
+    }
+    
+        public String getLCML_CODE_COLUMN() {
         return LCML_CODE_COLUMN;
     }
 
@@ -190,7 +227,7 @@ public class PropertyReader {
     public String getGEOMETRY() {
         return GEOMETRY;
     }
-
+    
 //    tomcat configuration
     private String tomcatip = "127.0.0.1";
     private String tomcatport = "8080";
@@ -235,6 +272,22 @@ public class PropertyReader {
     private String LCCS_LEGEND_COLUMN = "lccs_legend";
     private String GEOMETRY = "the_geom";
     
+//    swagger bootstrap
+    private String SWAGGER_BOOTSTRAP_PORT = null;
+    private String SWAGGER_BOOTSTRAP_BASE_PATH = null;
+    private String SWAGGER_BOOTSTRAP_HOST_NAME = null;
+    
+    //    postgis connector
+    private String LCCS_CODE_COLUMN = "lccs_code";
+    private String SOURCE_LCCS_CODE_COLUMN = "source_lccs_code";
+    private String POSTGIS_AGGREGATION_SUFFIX = "aggregation";
+    private String POSTGIS_IDENTIFIER_COLUMN = "gid";
+    
+//    geoserver connector
+    private String WORKSPACE = "geonode";
+    private String STORE_NAME = "datastore";
+    
+    
     private static PropertyReader instance;
     
     public static PropertyReader getInstance() {
@@ -278,14 +331,29 @@ public class PropertyReader {
             LCML_DIRECTORY = prop.getProperty("existconnectorlcmldirectory");
             
 //            assign config values to geonode connector
-            LCML_CODE_COLUMN = prop.getProperty("LCCS_code");
-            SOURCE_LCML_CODE_COLUMN = prop.getProperty("SOURCE_LCCS_code");
-            AGGREGATION_SUFFIX = prop.getProperty("aggregation");
-            IDENTIFIER_COLUMN = prop.getProperty("fid");
-            LAYER_COLUMN = prop.getProperty("layer");
-            LCCS_ATTRIBUTE_COLUMN = prop.getProperty("lccs_attribute");
-            LCCS_LEGEND_COLUMN = prop.getProperty("lccs_legend");
-            GEOMETRY = prop.getProperty("the_geom");
+            LCML_CODE_COLUMN = prop.getProperty("geonodeconnector_lcmlcodecolumn");
+            SOURCE_LCML_CODE_COLUMN = prop.getProperty("geonodeconnector_sourcelcmlcodecolumn");
+            AGGREGATION_SUFFIX = prop.getProperty("geonodeconnector_aggregationsuffix");
+            IDENTIFIER_COLUMN = prop.getProperty("geonodeconnector_identifiercolumn");
+            LAYER_COLUMN = prop.getProperty("geonodeconnector_layercolumn");
+            LCCS_ATTRIBUTE_COLUMN = prop.getProperty("geonodeconnector_lccsattributecolumn");
+            LCCS_LEGEND_COLUMN = prop.getProperty("geonodeconnector_lccslegendcolumn");
+            GEOMETRY = prop.getProperty("geonodeconnector_geometry");
+            
+//            swagger property reader
+            SWAGGER_BOOTSTRAP_HOST_NAME = prop.getProperty("swaggerbootstrap_hostname");
+            SWAGGER_BOOTSTRAP_PORT = prop.getProperty("swaggerbootstrap_port");
+            SWAGGER_BOOTSTRAP_BASE_PATH = prop.getProperty("swaggerbootstrap_basepath");
+            
+//            postgis connector
+            LCCS_CODE_COLUMN = prop.getProperty("lccscodecolumn");
+            SOURCE_LCCS_CODE_COLUMN = prop.getProperty("sourcelccscodecolumn");
+            POSTGIS_AGGREGATION_SUFFIX = prop.getProperty("aggregationsuffix");
+            POSTGIS_IDENTIFIER_COLUMN = prop.getProperty("identifiedcolumn");
+            
+//            geoserver connector 
+            WORKSPACE = prop.getProperty("geoserverworkspace");
+            STORE_NAME = prop.getProperty("geoserverstorename");
             
         } catch (IOException ex) {
 	    ex.printStackTrace();
