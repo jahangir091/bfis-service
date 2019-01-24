@@ -1388,10 +1388,13 @@ public class FAOBISService {
 	    String legend = classification.getValue();
 
 	    Set<String> classes = GeonodeConnector.getInstance().getClasses(layer, lcmlAttribute, null);
+            
+            ExistConnector existConnectorInstance = ExistConnector.getInstance();
+            String xml = existConnectorInstance.getLegend(legend).iterator().next();
 
 	    FAOBISResponse entity = new FAOBISResponse(Status.OK, "Basic object counts by class.");
 	    for (String clazz : classes) {
-		String count = "" + ExistConnector.getInstance().getBasicObjectCount(legend, clazz, null);
+		String count = "" + existConnectorInstance.getBasicObjectCount(legend, clazz, null, xml);
 		entity.getResults().add(clazz);
 		entity.getResults().add(count);
 	    }
@@ -1422,10 +1425,12 @@ public class FAOBISService {
 	    String legend = classification.getValue();
 
 	    Set<String> classes = GeonodeConnector.getInstance().getClasses(layer, lcmlAttribute, null);
+            ExistConnector existConnectorInstance = ExistConnector.getInstance();
+            String xml = existConnectorInstance.getLegend(legend).iterator().next();
 
 	    FAOBISResponse entity = new FAOBISResponse(Status.OK, "Property counts by class.");
 	    for (String clazz : classes) {
-		String count = "" + ExistConnector.getInstance().getPropertyCount(legend, clazz);
+		String count = "" + existConnectorInstance.getPropertyCount(legend, clazz, xml);
 		entity.getResults().add(clazz);
 		entity.getResults().add(count);
 	    }
@@ -1456,10 +1461,13 @@ public class FAOBISService {
 	    String legend = classification.getValue();
 
 	    Set<String> classes = GeonodeConnector.getInstance().getClasses(layer, lcmlAttribute, null);
+            
+            ExistConnector existConnectorInstance = ExistConnector.getInstance();
+            String xml = existConnectorInstance.getLegend(legend).iterator().next();
 
 	    FAOBISResponse entity = new FAOBISResponse(Status.OK, "Characteristic counts by class.");
 	    for (String clazz : classes) {
-		String count = "" + ExistConnector.getInstance().getCharacteristicCount(legend, clazz);
+		String count = "" + existConnectorInstance.getCharacteristicCount(legend, clazz, xml);
 		entity.getResults().add(clazz);
 		entity.getResults().add(count);
 	    }
@@ -1492,14 +1500,16 @@ public class FAOBISService {
 	    Set<String> classes = GeonodeConnector.getInstance().getClasses(layer, lcmlAttribute, null);
 
 	    FAOBISResponse entity = new FAOBISResponse(Status.OK, "Counts by basic object.");
-
-	    Set<String> objects = ExistConnector.getInstance().getBasicObjects(legend);
+            
+            ExistConnector existConnectorInstance = ExistConnector.getInstance();
+            String xml = existConnectorInstance.getLegend(legend).iterator().next();
+            Set<String> objects = existConnectorInstance.getBasicObjects(legend);
 
 	    for (String obj : objects) {
 		Integer count = 0;
 		for (String clazz : classes) {
 
-		    count += ExistConnector.getInstance().getBasicObjectCount(legend, clazz, obj);
+		    count += existConnectorInstance.getBasicObjectCount(legend, clazz, obj, xml);
 
 		}
 		if (count > 0) {
@@ -1536,11 +1546,15 @@ public class FAOBISService {
 	    Set<String> classes = GeonodeConnector.getInstance().getClasses(layer, lcmlAttribute, null);
 
 	    FAOBISResponse entity = new FAOBISResponse(Status.OK, "Counts by basic object.");
+            
+            
+            ExistConnector existConnectorInstance = ExistConnector.getInstance();
+            String xml = existConnectorInstance.getLegend(legend).iterator().next();
 
-	    Set<String> objects = ExistConnector.getInstance().getBasicObjects(legend);
+	    Set<String> objects = existConnectorInstance.getBasicObjects(legend);
 
 	    HashMap<String, Integer> featureCounts = GeonodeConnector.getInstance().getCountsByClass(layer, null, null, null, null);
-
+            Integer cc = 0;
 	    for (String obj : objects) {
 		Integer count = 0;
 		for (String clazz : classes) {
@@ -1548,9 +1562,12 @@ public class FAOBISService {
 		    Integer multiplier = featureCounts.get(clazz);
 
 		    if (multiplier != 0) {
-			Integer sub = multiplier * ExistConnector.getInstance().getBasicObjectCount(legend, clazz, obj);
+			Integer sub = multiplier * existConnectorInstance.getBasicObjectCount(legend, clazz, obj, xml);
 			count += sub;
 		    }
+                    cc++;
+                    System.out.println("cc = "+ cc);
+                            
 		}
 		if (count > 0) {
 		    entity.getResults().add(obj);

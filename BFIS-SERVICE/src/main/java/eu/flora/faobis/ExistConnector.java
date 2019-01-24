@@ -478,8 +478,8 @@ public class ExistConnector {
 
     }
 
-    public Integer getBasicObjectCount(String legend, String clazz, String obj) throws Exception {
-	String xml = getLegend(legend).iterator().next();
+    public Integer getBasicObjectCount(String legend, String clazz, String obj, String xml) throws Exception {
+//	String xml = getLegend(legend).iterator().next();
 	XMLDocumentReader reader = new XMLDocumentReader(xml);
 
 	String objQuery = "";
@@ -492,16 +492,16 @@ public class ExistConnector {
 
     }
 
-    public Integer getPropertyCount(String legend, String clazz) throws Exception {
-	String xml = getLegend(legend).iterator().next();
+    public Integer getPropertyCount(String legend, String clazz, String xml) throws Exception {
+//	String xml = getLegend(legend).iterator().next();
 	XMLDocumentReader reader = new XMLDocumentReader(xml);
 	return reader.evaluateNumber("count(//*:LC_LandCoverClass[*:map_code='" + clazz
 		+ "']//*:LC_Stratum/*:elements/*//*[local-name(.)!='LC_Characteristic'][@*:type])").intValue();
 
     }
 
-    public Integer getCharacteristicCount(String legend, String clazz) throws Exception {
-	String xml = getLegend(legend).iterator().next();
+    public Integer getCharacteristicCount(String legend, String clazz, String xml) throws Exception {
+//	String xml = getLegend(legend).iterator().next();
 	XMLDocumentReader reader = new XMLDocumentReader(xml);
 	return reader
 		.evaluateNumber("count(//*:LC_LandCoverClass[*:map_code='" + clazz + "']//*[local-name(.)='LC_Characteristic'][@*:type])")
@@ -509,4 +509,4 @@ public class ExistConnector {
 
     }
 
-}
+    }
