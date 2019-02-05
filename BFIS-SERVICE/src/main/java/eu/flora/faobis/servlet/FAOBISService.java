@@ -1566,7 +1566,7 @@ public class FAOBISService {
 			count += sub;
 		    }
                     cc++;
-                    System.out.println("cc = "+ cc);
+                  
                             
 		}
 		if (count > 0) {
